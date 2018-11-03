@@ -36,8 +36,8 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	
 	var pageWidth = screen.width;
 	var maxWidth = 1200;
-	var mobileMultiplierFont = pageWidth < maxWidth ? 1.8 : 1;
-	var mobileMultiplierGaps = pageWidth < maxWidth ? 1.6 : 1;
+	var mobileMultiplierFont = pageWidth < maxWidth ? 1.9 : 1;
+	var mobileMultiplierGaps = pageWidth < maxWidth ? 0.5 : 1;
 	var width = mobileMultiplierFont == 1 ? maxWidth : $(document).width();
 	var pageWidthScale = width / maxWidth;
 	var height = 600;
@@ -52,7 +52,7 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	var axisGap_x = 150 * pageWidthScale * mobileMultiplierGaps;
 	var axisGap_y = 60 * pageWidthScale * mobileMultiplierGaps;
 	var gapBetweenBars = 5 * pageWidthScale;
-	var axisPointMargin = 25 * pageWidthScale * mobileMultiplierGaps;
+	var axisPointMargin = 25 * pageWidthScale * mobileMultiplierFont;
 	var tickLength = 10 * pageWidthScale * mobileMultiplierFont;
 	var axisLabelSize = 25 * pageWidthScale * mobileMultiplierFont;
 	var axisValFontSize = 12 * pageWidthScale * mobileMultiplierFont;
@@ -132,7 +132,7 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	drawSVGobj(svg, "text", {x: width/2, y: height - axisGap_y + 2*axisPointMargin, text_anchor:"middle", style:"font-size:" + axisLabelSize + "px; fill:" + textCol }, "Completion time (hours)");
 	
 	// Dont print all the x labels if there are too many
-	var printEvery = Math.ceil(hist_obj_breaks.length / (18 / mobileMultiplier)); //hist_obj_breaks.length 
+	var printEvery = Math.ceil(hist_obj_breaks.length / (18 / mobileMultiplierFont)); //hist_obj_breaks.length 
 	console.log("printEvery", printEvery, hist_obj_breaks.length);
 	
 	// x-ticks

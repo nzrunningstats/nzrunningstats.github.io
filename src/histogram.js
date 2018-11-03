@@ -38,7 +38,7 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	var maxWidth = 1200;
 	var mobileMultiplierFont = pageWidth < maxWidth ? 1.9 : 1;
 	var mobileMultiplierGaps = pageWidth < maxWidth ? 0.5 : 1;
-	var width = mobileMultiplierFont == 1 ? maxWidth : $(document).width();
+	var width = 1200; // mobileMultiplierFont == 1 ? maxWidth : $(document).width();
 	var pageWidthScale = width / maxWidth;
 	var height = 600;
 	

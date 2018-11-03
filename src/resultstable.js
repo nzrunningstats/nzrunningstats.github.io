@@ -123,7 +123,7 @@ function renderResultsTable(eventwebsites, marathonresults, race = "halfmarathon
 				 
 				 <td rowspan=1 style="text-align:center">
 					<a target="_blank" style="text-decoration:none;" href="` + eventwebsites.website[i] + `" title="Visit course website">
-						<span class="linkspan  smallfont">
+						<span class="linkspan smallfont">
 							Visit
 						</span>
 					</a>

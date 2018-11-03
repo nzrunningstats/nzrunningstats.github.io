@@ -51,7 +51,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 	
 	
 	// Plot constants
-	var axisGap_x = 260 * pageWidthScale * mobileMultiplierFont;
+	var axisGap_x = 260 * pageWidthScale * mobileMultiplierGaps;
 	var axisGap_y = 60 * pageWidthScale * mobileMultiplierFont;
 	var heightPerRow = 25 * pageWidthScale * mobileMultiplierFont;
 	var errorCircleRadius = 4 * pageWidthScale * mobileMultiplierFont;

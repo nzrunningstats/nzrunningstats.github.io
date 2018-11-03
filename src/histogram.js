@@ -32,7 +32,8 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	var maxWidth = 1200;
 	var width = Math.min(maxWidth, pageWidth);
 	var pageWidthScale = width / maxWidth;
-	var height = 500;
+	var height = 600;
+	var mobileMultiplier = pageWidth < 1200 ? 2.2 : 1;
 	
 	
 	// Plot constants
@@ -40,7 +41,12 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	var axisGap_y = 60 * pageWidthScale;
 	var gapBetweenBars = 5 * pageWidthScale;
 	var axisPointMargin = 25 * pageWidthScale;
-	var tickLength = 10 * pageWidthScale;
+	var tickLength = 10 * pageWidthScale * mobileMultiplier;
+	var axisLabelSize = 25 * pageWidthScale * mobileMultiplier;
+	var axisValFontSize = 12 * pageWidthScale * mobileMultiplier;
+	var axisStrokeWidth = 2 * pageWidthScale * mobileMultiplier;
+	var hoverLabelFontSize = 16 * pageWidthScale * mobileMultiplier;
+	var summaryStatFontSize = 16 * pageWidthScale * mobileMultiplier;
 	var axisCol = "#57595D";
 	var gridCol = "rgb(87,89,93, 0.2);"
 	var textCol = "black";
@@ -110,11 +116,11 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	
 	
 	// x-axis
-	drawSVGobj(svg, "line", {x1: axisGap_x - 1, y1: height - axisGap_y, x2: width - axisGap_x, y2: height - axisGap_y, style: "stroke:" + axisCol + " ;stroke-width:" + 2*pageWidthScale});
-	drawSVGobj(svg, "text", {x: width/2, y: height - axisGap_y + 2*axisPointMargin, text_anchor:"middle", style:"font-size:" + (20 * pageWidthScale) + "px; fill:" + textCol }, "Completion time (hours)");
+	drawSVGobj(svg, "line", {x1: axisGap_x - 1, y1: height - axisGap_y, x2: width - axisGap_x, y2: height - axisGap_y, style: "stroke:" + axisCol + " ;stroke-width:" + axisStrokeWidth});
+	drawSVGobj(svg, "text", {x: width/2, y: height - axisGap_y + 2*axisPointMargin, text_anchor:"middle", style:"font-size:" + axisLabelSize + "px; fill:" + textCol }, "Completion time (hours)");
 	
 	// Dont print all the x labels if there are too many
-	var printEvery = Math.ceil(hist_obj_breaks.length / 18); //hist_obj_breaks.length 
+	var printEvery = Math.ceil(hist_obj_breaks.length / (18 * mobileMultiplier)); //hist_obj_breaks.length 
 	console.log("printEvery", printEvery, hist_obj_breaks.length);
 	
 	// x-ticks
@@ -122,16 +128,16 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 		
 		//var x = widthScale * (hist_obj_breaks[i] - xmin) + axisGap_x + ;
 		var x = (i * barWidth) + (i+1) * gapBetweenBars + axisGap_x;
-		var strokewidth =  i % printEvery == 0 ? 2 : 0;
+		var strokewidth =  i % printEvery == 0 ? axisStrokeWidth : 0;
 		drawSVGobj(svg, "line", {x1: x, y1: height - axisGap_y - tickLength/2, x2: x, y2: height - axisGap_y + tickLength/2, style: "stroke:" + axisCol + ";stroke-width:" + strokewidth});
-		if (i % printEvery == 0) drawSVGobj(svg, "text", {x: x, y: height -  axisGap_y + 0.75* axisPointMargin, text_anchor:"middle", style:"font-size:" + (12 * pageWidthScale) + "; fill:" + textCol }, formatMinutes(roundToSF(hist_obj_breaks[i], 3)));
+		if (i % printEvery == 0) drawSVGobj(svg, "text", {x: x, y: height -  axisGap_y + 0.75* axisPointMargin, text_anchor:"middle", style:"font-size:" + axisValFontSize + "; fill:" + textCol }, formatMinutes(roundToSF(hist_obj_breaks[i], 3)));
 	
 	}
 	
 	// Y axis
-	drawSVGobj(svg, "line", {x1: axisGap_x, y1: height - axisGap_y, x2: axisGap_x, y2: axisGap_y, style: "stroke:" + axisCol + " ;stroke-width:" + (2 * pageWidthScale)});
+	drawSVGobj(svg, "line", {x1: axisGap_x, y1: height - axisGap_y, x2: axisGap_x, y2: axisGap_y, style: "stroke:" + axisCol + " ;stroke-width:" + axisStrokeWidth});
 	drawSVGobj(svg, "text", {x: axisGap_x - 2*axisPointMargin , y: height/2, text_anchor:"middle", 
-			style:"font-size: " + (25 * pageWidthScale) + "px; fill:" + textCol, 
+			style:"font-size: " + axisLabelSize + "px; fill:" + textCol, 
 			transform: "rotate(-90," + (axisGap_x - 2*axisPointMargin) + "," + (height/2) + ")" }, "Frequency");
 	
 	// y-ticks
@@ -142,12 +148,12 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 		var y0 = height - heightScale * (ylabPos[labelID] - ymin) - axisGap_y;
 		
 		
-		drawSVGobj(svg, "text", {class: "axis", x: axisGap_x - axisPointMargin/3, y: y0, text_anchor:"end", dy:"0.3em", style: "font-size: " + (12 * pageWidthScale) + "px; fill:" + textCol}, ylabPos[labelID]);
+		drawSVGobj(svg, "text", {class: "axis", x: axisGap_x - axisPointMargin/3, y: y0, text_anchor:"end", dy:"0.3em", style: "font-size: " + axisValFontSize + "px; fill:" + textCol}, ylabPos[labelID]);
 		
 
 		// Draw a tick on the axis
-		var strokeWidth = 2;
-		drawSVGobj(svg, "line", {class: "axis", x1: axisGap_x-tickLength/2, y1: y0, x2: axisGap_x+tickLength/2, y2:  y0, style: "stroke:" + axisCol + " ;stroke-width:" + (1 * pageWidthScale)});
+		var strokeWidth = axisStrokeWidth / 2;
+		drawSVGobj(svg, "line", {class: "axis", x1: axisGap_x-tickLength/2, y1: y0, x2: axisGap_x+tickLength/2, y2:  y0, style: "stroke:" + axisCol + " ;stroke-width:" + strokeWidth});
 		
 		
 	}
@@ -165,9 +171,9 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	*/
 	
 	// Print summaries at the top
-	drawSVGobj(svg, "text", {x:  axisGap_x, y: axisGap_y - axisPointMargin, text_anchor: "start", style:"font-size: " + (16 * pageWidthScale) + "px; fill:" + textCol }, "n = " +  hist_obj.n[hist_row_num]);
-	drawSVGobj(svg, "text", {x:  width - axisGap_x, y: axisGap_y - axisPointMargin, text_anchor: "end", style:"font-size: " + (16 * pageWidthScale) + "px; fill:" + textCol }, "Median time: " +  formatMinutes(roundToSF(hist_obj.median[hist_row_num], 3)));
-	drawSVGobj(svg, "text", {x:  width / 2, y: axisGap_y - axisPointMargin, text_anchor: "middle", style:"font-size: " + (16 * pageWidthScale) + "px; fill:" + textCol }, "Mean time: " +  formatMinutes(roundToSF(hist_obj.mean[hist_row_num], 3)));
+	drawSVGobj(svg, "text", {x:  axisGap_x, y: axisGap_y - axisPointMargin, text_anchor: "start", style:"font-size: " + summaryStatFontSize + "px; fill:" + textCol }, "n = " +  hist_obj.n[hist_row_num]);
+	drawSVGobj(svg, "text", {x:  width - axisGap_x, y: axisGap_y - axisPointMargin, text_anchor: "end", style:"font-size: " + summaryStatFontSize + "px; fill:" + textCol }, "Median time: " +  formatMinutes(roundToSF(hist_obj.median[hist_row_num], 3)));
+	drawSVGobj(svg, "text", {x:  width / 2, y: axisGap_y - axisPointMargin, text_anchor: "middle", style:"font-size: " + summaryStatFontSize + "px; fill:" + textCol }, "Mean time: " +  formatMinutes(roundToSF(hist_obj.mean[hist_row_num], 3)));
 
 	
 	// Hover events
@@ -216,7 +222,7 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 				drawSVGobj(svg, "text", {id: "barLabel", 	x: x + dx, //mouseX + dx,
 															y: y + dy, //mouseY + dy,
 															text_anchor: "start", 
-															style: "font-size: " + (16 * pageWidthScale) + "px; fill:" + textCol}, 
+															style: "font-size: " + hoverLabelFontSize + "px; fill:" + textCol}, 
 															msg, true);
 				
 				

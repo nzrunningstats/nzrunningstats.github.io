@@ -21,6 +21,21 @@
 
 
 
+
+
+select::-ms-value {
+    background: none; /* remove blue background on ie10/ie11 when selected*/
+    color:#000;
+}
+
+select::-ms-expand {
+    background: none; /* remove blue background on ie10/ie11 when selected*/
+    color:#000;
+}
+
+
+
+
 body { 
 	font-family: Arial; 
 	min-width:1200px;
@@ -33,20 +48,11 @@ body {
 .linkspan{
 
 	padding: 3px; 
-	background-color:rgb(87,89,93, 0.8);
-	color:white;
+	%background:rgb(87,89,93, 0.8);
+	%color:white;
 	margin-right:20px;
 	font-size:18px;
 	
-}
-
-.maintitle{
-	font-size: 70px; 
-	margin-bottom: -5px;
-}
-
-.subtitle{
-	font-size: 20px;
 }
 
 
@@ -117,13 +123,20 @@ a {
 .userInput{
 	
 	font-size: 16px; 
-	color:white; 
-	background-color:rgb(87,89,93, 0.8); 
 	padding: 3px 3px;
-	%width:170px;
 	
 	
 }
+
+.maintitle{
+	font-size: 70px; 
+	margin-bottom: -5px ;
+}
+
+.subtitle{
+	font-size: 20px;
+}
+
 
 
 input::-webkit-outer-spin-button,

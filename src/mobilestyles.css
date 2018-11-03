@@ -23,30 +23,37 @@
 
 body { 
 	font-family: Arial; 
-	min-width:1200px;
-	width:100%;
+	width:100vw;
+	max-width:100%;
 	margin:0px;
+	font-size:40px;
+}
+
+
+h1 {
+	
+	font-size:75px;
+	
+	
+}
+
+
+h2 {
+	
+	%font-size:30px;
+	
 }
 
 
 
 .linkspan{
 
-	padding: 3px; 
+	padding: 8px 8px; 
 	background-color:rgb(87,89,93, 0.8);
 	color:white;
 	margin-right:20px;
-	font-size:18px;
+	font-size:40px;
 	
-}
-
-.maintitle{
-	font-size: 70px; 
-	margin-bottom: -5px;
-}
-
-.subtitle{
-	font-size: 20px;
 }
 
 
@@ -66,9 +73,11 @@ a {
 
 .tabs-bg{
 
-	width:100%; 
+	min-width:100%;
+	max-width:100%;
+	width:100%;
 	background-color:#d3d3d3; 
-	height:26px; 
+	height:48px; 
 	padding: 12 0 0 0;  
 	border-radius:0px 0px 5px 5px
 
@@ -76,9 +85,10 @@ a {
 
 
 .header {
-	background-color: #57595D;
+	background-color: red; %#57595D;
 	color:white;
-	%min-width:1500px;
+	min-width:100%;
+	max-width:100%;
 	width:100%;
 	vertical-align:top;
 	padding-top:5px;
@@ -91,10 +101,11 @@ a {
 .tab{
 	
 	padding: 2px 10px 5px 10px;
-	margin-right:10px;
+	margin-right:15px;
+	%margin-bottom:-5px;
 	background-color:rgb(87,89,93, 0.8);
 	border-radius:5px 5px 0px 0px;
-	font-size:18px;
+	font-size:38px;
 	color:white;
 	cursor:pointer;
 	
@@ -116,14 +127,25 @@ a {
 
 .userInput{
 	
-	font-size: 16px; 
+	font-size: 35px; 
 	color:white; 
 	background-color:rgb(87,89,93, 0.8); 
-	padding: 3px 3px;
+	padding: 5px 5px;
+	width:4em;
 	%width:170px;
 	
 	
 }
+
+.maintitle{
+	font-size: 140px; 
+	margin-bottom: -5px ;
+}
+
+.subtitle{
+	font-size: 40px;
+}
+
 
 
 input::-webkit-outer-spin-button,
@@ -137,7 +159,7 @@ input::-webkit-inner-spin-button {
 
 .display-div{
 	
-	width:70%; 
+	width:95%; 
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 10px; 
@@ -149,7 +171,7 @@ input::-webkit-inner-spin-button {
 }
 
 .caption-div{
-	width:70%; 
+	width:95%; 
 	text-align:justify; 
 	margin:auto; 
 	line-height: 1.3em
@@ -171,11 +193,12 @@ input::-webkit-inner-spin-button {
 	 border:solid;
 	 border-width:3px;
 	 border-color:rgb(87,89,93, 1);
-	 font-size:15px;
+	 font-size:35px;
 	 text-align:center; 
 	 padding: 10px 10px; 
 	 margin-top:5px;
 	 border-radius:6px;
+	 line-height:2.5em;
 }
 
 .anova-bar-odd.selected  {
@@ -205,7 +228,7 @@ input::-webkit-inner-spin-button {
 
 .results-row{
 
-	font-size:14px;
+	font-size:35px;
 	font-family: Arial; 
 	
 }
@@ -215,7 +238,8 @@ input::-webkit-inner-spin-button {
 
 	color:white;
 	background-color:#57595D;
-	font-size:14px;
+	font-size:35px;
+	
 	
 }
 

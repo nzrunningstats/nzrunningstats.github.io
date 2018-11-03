@@ -581,18 +581,18 @@ function loadCSV(url, resolve = function(result) { }){
 
 							<b>Query:</b> I ran the 
 							
-									<select onChange='queryHalfMarathon();' id="userRanMarathon_dropdown" class="userInput" style="font-size:14px" title="Select a course"></select> 
+									<select onChange='queryHalfMarathon();' id="userRanMarathon_dropdown" class="userInput" title="Select a course"></select> 
 									
 							marathon in
 							
 							 <input onFocus="this.select();" onChange='queryHalfMarathon();'  class="userInput" style="text-align:center"  type="text" onChange='' value="4:30:00"  id="userRanMarathon_time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-9][0-9]"  title="How long did you take to complete this course?" >
 
-							 hours. How long would I take at 
+							 hours. <br><br> How long would I take at 
 							 
-							 <select onChange='queryHalfMarathon();' id="userQueryMarathon_dropdown" class="userInput"  style="font-size:14px" title="Select a course"></select> 
+							 <select onChange='queryHalfMarathon();' id="userQueryMarathon_dropdown" class="userInput"  title="Select a course"></select> 
 							 
 							 ?
-							 <div style="height:10px"></div>
+							 <div style="height:20px"></div>
 							 
 							 <b>Response:</b> <span id="userResponseMarathon"></span> 
 							 

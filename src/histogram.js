@@ -228,7 +228,7 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 				var dx = w/2 + textLabelPadding;
 				svg.find("#barLabel").remove();
 				svg.find(".barLabelBg").remove();
-				var msg = roundToSF(hist_obj_counts[i]/hist_obj.n[hist_row_num]  * 100) + "% of participants." 
+				var msg = roundToSF(hist_obj_counts[i]/hist_obj.n[hist_row_num]  * 100) + "% of participants" 
 					//+ formatMinutes(roundToSF(hist_obj_breaks[i], 3)) + " and " + formatMinutes(roundToSF(hist_obj_breaks[i+1], 3));
 				
 				drawSVGobj(svg, "text", {id: "barLabel", 	x: x + dx, //mouseX + dx,

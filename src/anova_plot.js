@@ -30,29 +30,54 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 	if (svg == null) return "Error finding " + svg_id;
 	
 	
+	
+	svg.on("orientationchange", function( event ) {
+		plot_anova(svg_id, region_anova, event_anova);
+	});
+	
+	
+	var pageWidth = screen.width;
+	var maxWidth = 1400;
+	var mobileMultiplierFont = pageWidth < maxWidth ? 1.9 : 1;
+	var mobileMultiplierGaps = pageWidth < maxWidth ? 0.5 : 1;
+	var width = mobileMultiplierFont == 1 ? maxWidth : $(document).width();
+	var pageWidthScale = width / maxWidth;
+	
+	
+	
+	
+	
+	console.log("width", pageWidth, mobileMultiplierFont, pageWidthScale);
+	
+	
 	// Plot constants
-	var axisGap_x = 260;
-	var axisGap_y = 60;
-	var heightPerRow = 25;
-	var heightPerEventRow = 16;
-	var gapBetweenRows = 11;
-	var gapBetweenEventRows = 5;
-	var axisPointMargin = 25;
-	var tickLength = 0;
+	var axisGap_x = 260 * pageWidthScale * mobileMultiplierGaps;
+	var axisGap_y = 60 * pageWidthScale * mobileMultiplierFont;
+	var heightPerRow = 25 * pageWidthScale * mobileMultiplierFont;
+	var errorCircleRadius = 4 * pageWidthScale * mobileMultiplierFont;
+	var heightPerEventRow = 16 * pageWidthScale * mobileMultiplierFont;
+	var gapBetweenRows = 11 * pageWidthScale * mobileMultiplierFont;
+	var gapBetweenEventRows = 5 * pageWidthScale * mobileMultiplierFont;
+	var axisPointMargin = 25 * pageWidthScale * mobileMultiplierFont;
+	var tickLength = 0 * pageWidthScale * mobileMultiplierFont;
+	var axisNameFontSize = 20 * pageWidthScale * mobileMultiplierFont;
+	var axisValueFontSize = 15 * pageWidthScale * mobileMultiplierFont;
+	var courseNameFontSize = 15 * pageWidthScale * mobileMultiplierFont;
+	var eventNameFontSize = 14 * pageWidthScale * mobileMultiplierFont;
+	var hoverLabelFontSize = 12 * pageWidthScale * mobileMultiplierFont;
+	var axisWidth = 2 * pageWidthScale * mobileMultiplierFont;
 	var axisCol = "#57595D";
 	var gridCol = "rgb(87,89,93, 0.2);"
 	var textCol = "black";
 	var errorBarCol = "orange";
 	var animationTime = 100;
-
+	var height = (heightPerRow + gapBetweenRows) * region_anova.nrows + gapBetweenRows + 1 * axisGap_y;
 	
 	
 	// Reset the svg
-	svg.width(1400);
-	svg.height((heightPerRow + gapBetweenRows) * region_anova.nrows + gapBetweenRows + 1 * axisGap_y);
-	var height = svg.height();
-	var width = svg.width();
-	//svg.html("");
+	svg.width(width);
+	svg.height(height);
+	svg.html("");
 	
 
 	
@@ -78,17 +103,16 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 	
 	
 	// Plot x-axis with ticks
-	drawSVGobj(svg, "line", {class: "axis", x1: axisGap_x, y1: height - axisGap_y, x2: width - axisGap_x, y2: height - axisGap_y, style: "stroke:" + axisCol + " ;stroke-width:2"});
-	drawSVGobj(svg, "text", {class: "axis", x: width/2, y: height - axisGap_y + 2*axisPointMargin, text_anchor:"middle", style:"font-size: 20px; fill:" + textCol }, "Time adjustment coefficient &beta;");
+	drawSVGobj(svg, "line", {class: "axis", x1: axisGap_x, y1: height - axisGap_y, x2: width - axisGap_x, y2: height - axisGap_y, style: "stroke:" + axisCol + " ;stroke-width:" + axisWidth});
+	drawSVGobj(svg, "text", {class: "axis", x: width/2, y: height - axisGap_y + 2*axisPointMargin, text_anchor:"middle", style:"font-size: " + axisNameFontSize + "px; fill:" + textCol }, "Time adjustment coefficient &beta;");
 	for (var labelID = 0; labelID < xlabPos.length; labelID++){
 		var x0 = widthScale * (xlabPos[labelID] - xmin) + axisGap_x;
 		
-		drawSVGobj(svg, "text", {class: "axis", x: x0, y: height - axisGap_y + axisPointMargin, text_anchor:"middle", style: "text-align:center; font-size: 15px; fill:" + textCol}, xlabPos[labelID]);
+		drawSVGobj(svg, "text", {class: "axis", x: x0, y: height - axisGap_y + axisPointMargin, text_anchor:"middle", style: "text-align:center; font-size: " + axisValueFontSize + "px; fill:" + textCol}, xlabPos[labelID]);
 		
 
 		// Draw a tick on the axis
-		var strokeWidth = xlabPos[labelID] == 0 ? 2 : 1;
-		drawSVGobj(svg, "line", {class: "axis", x1: x0, y1: height - axisGap_y + tickLength/2, x2: x0, y2:  0, style: "stroke:" + gridCol + " ;stroke-width:1"});
+		drawSVGobj(svg, "line", {class: "axis", x1: x0, y1: height - axisGap_y + tickLength/2, x2: x0, y2:  0, style: "stroke:" + gridCol + " ;stroke-width:" + axisWidth/2});
 		
 		
 	}
@@ -150,7 +174,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 			region: row,
 			cx: (coeff >= 0 ? x + w : x), 
 			cy: y + heightPerRow/2, 
-			r:5}, 
+			r:errorCircleRadius*1.2}, 
 			evnt);
 		
 		
@@ -158,11 +182,11 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 		//drawSVGobj(svg, "text", {row: row, x: xCenter + (coeff >= 0 ? -gapBetweenRows : gapBetweenRows), y: y + heightPerRow/2 + 5, text_anchor: coeff >= 0 ? "end" : "start", style: "font-size: 15px; fill:" + textCol}, event);
 		if (coeff >= 0){
 			var eventX = Math.min(xCenter, x + w - errorBarLen) - gapBetweenRows;
-			drawSVGobj(svg, "text", {class: "clickrow" + row, region: row, row: row, x: eventX, y: y + heightPerRow/2 + 5, text_anchor: "end", style: "cursor:pointer; font-size: 15px; fill:" + textCol}, evnt + "<title>Display events</title>");
+			drawSVGobj(svg, "text", {class: "clickrow" + row, region: row, row: row, x: eventX, y: y + heightPerRow/2 + 5, text_anchor: "end", style: "cursor:pointer; font-size: " + courseNameFontSize + "px; fill:" + textCol}, evnt + "<title>Display events</title>");
 		}
 		else{
 			var eventX = Math.max(xCenter, x + errorBarLen) + gapBetweenRows;
-			drawSVGobj(svg, "text", {class: "clickrow" + row, region: row, row: row, x: eventX, y: y + heightPerRow/2 + 5, text_anchor: "start", style: "cursor:pointer; font-size: 15px; fill:" + textCol}, evnt + "<title>Display events</title>");
+			drawSVGobj(svg, "text", {class: "clickrow" + row, region: row, row: row, x: eventX, y: y + heightPerRow/2 + 5, text_anchor: "start", style: "cursor:pointer; font-size: " + courseNameFontSize + "px; fill:" + textCol}, evnt + "<title>Display events</title>");
 		}
 		
 		
@@ -201,11 +225,11 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 			// Event name
 			if (coeff_event >= 0){
 				var eventX = Math.min(xCenter, x_event + w_event - errorBarLen_event) - gapBetweenRows;
-				drawSVGobj(svg, "text", {class: "clickrow" + row, evnt: row, row: row, erow: k, x: eventX, y: y_event + heightPerEventRow/2 + 5, text_anchor: "end", style: "display:none; cursor:pointer; font-size: 14px; fill:" + textCol}, evnt_event + "<title>Collapse events</title>");
+				drawSVGobj(svg, "text", {class: "clickrow" + row, evnt: row, row: row, erow: k, x: eventX, y: y_event + heightPerEventRow/2 + 5, text_anchor: "end", style: "display:none; cursor:pointer; font-size: " + eventNameFontSize + "px; fill:" + textCol}, evnt_event + "<title>Collapse events</title>");
 			}
 			else{
 				var eventX = Math.max(xCenter, x_event + errorBarLen_event) + gapBetweenRows;
-				drawSVGobj(svg, "text", {class: "clickrow" + row, evnt: row, row: row, erow: k, x: eventX, y: y_event + heightPerEventRow/2 + 5, text_anchor: "start", style: "display:none; cursor:pointer; font-size: 14px; fill:" + textCol}, evnt_event + "<title>Collapse events</title>");
+				drawSVGobj(svg, "text", {class: "clickrow" + row, evnt: row, row: row, erow: k, x: eventX, y: y_event + heightPerEventRow/2 + 5, text_anchor: "start", style: "display:none; cursor:pointer; font-size: " + eventNameFontSize + "px; fill:" + textCol}, evnt_event + "<title>Collapse events</title>");
 			}
 			
 			
@@ -232,7 +256,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 				cx: (coeff_event >= 0 ? x_event + w_event : x_event), 
 				cy: y_event + heightPerEventRow/2, 
 				style:"display:none",
-				r:4}, 
+				r:errorCircleRadius}, 
 				evnt);
 			
 			
@@ -278,7 +302,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 			drawSVGobj(svg, "text", {id: "barLabel", 	x: labelX,
 														y: labelY,
 														text_anchor: above ? "start" : "end", 
-														style: "font-size: 12px; fill:" + textCol}, 
+														style: "font-size: " + hoverLabelFontSize + "px; fill:" + textCol}, 
 														msg, true);
 			
 			ele.addClass("selected");
@@ -493,7 +517,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 	
 
 	// Redraw y axis
-	drawSVGobj(svg, "line", {class: "axis", x1: xCenter, y1: height - axisGap_y + tickLength/2, x2: xCenter, y2: 0, style: "stroke:" + axisCol + " ;stroke-width:2"});
+	drawSVGobj(svg, "line", {class: "axis", x1: xCenter, y1: height - axisGap_y + tickLength/2, x2: xCenter, y2: 0, style: "stroke:" + axisCol + " ;stroke-width:" + axisWidth});
 
 	
 }

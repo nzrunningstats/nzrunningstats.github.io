@@ -328,10 +328,11 @@ b.sort-by:after {
 }
 
 .nbar{
-	position:absolute; 
+	position:relative; 
 	background-color:#57595D; 
-	height: 14px; 
-	margin-top: -6px;  
+	height: 1em; 
+	margin-top: 2px;  
+	margin-bottom: 2px;  
 	cursor: auto
 }
 

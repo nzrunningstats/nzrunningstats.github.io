@@ -129,13 +129,22 @@ a {
 .userInput{
 	
 	font-size: 16px; 
-	color:white; 
-	background-color:rgb(87,89,93, 0.8); 
+	color:black; 
+	%background-color:rgb(87,89,93, 0.8); 
 	padding: 3px 3px;
 	%width:170px;
 	
 	
 }
+
+
+.userInput.fw{
+
+	width:5em;
+
+	
+}
+
 
 
 input::-webkit-outer-spin-button,
@@ -179,15 +188,15 @@ input::-webkit-inner-spin-button {
 
 .query{
 	
-	 %background-color:#d3d3d3;
-	 border:solid;
-	 border-width:3px;
-	 border-color:rgb(87,89,93, 1);
+	 background-color:#d3d3d3;
+	 %border:solid;
+	 %border-width:3px;
+	 %border-color:rgb(87,89,93, 1);
 	 font-size:15px;
 	 text-align:center; 
 	 padding: 10px 10px; 
 	 margin-top:5px;
-	 border-radius:6px;
+	 %border-radius:6px;
 }
 
 .anova-bar-odd.selected  {

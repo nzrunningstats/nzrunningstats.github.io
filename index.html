@@ -46,7 +46,7 @@
 
 <title>NZ running stats</title>
 <link rel="icon" href="src/Images/logo.svg">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes, target-densitydpi=device-dpi" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="New Zealand marathon and half-marathon statistical summaries." />
 <link rel="stylesheet" type="text/css" href="src/styles.css">
@@ -211,7 +211,7 @@ function queryPaceCalulator(from_speed = true){
 						<b style="margin-right:10px">Races:</b>
 						
 						
-						<mobilegap> </mobilegap>
+						
 						
 						<a href="marathon/" title="View marathon statistics">
 							<span class="linkspan">
@@ -262,7 +262,7 @@ function queryPaceCalulator(from_speed = true){
 							A speed of <input  type="number" onFocus="this.select();" onChange='queryPaceCalulator(true);' class="userInput fw" style="text-align:center; box-shadow:0px 0px 0px;"  step="0.1" value="10" min=0 max=100  id="calculator_speed"> 
 							
 							
-							km/hr  is equal to a <mobilegap> </mobilegap> pace of
+							km/hr  is equal to a  pace of
 							
 
 							<input onFocus="this.select();" onChange='queryPaceCalulator(false);'  class="userInput fw" style="text-align:center"  type="text" value="5:00"  id="calculator_pace" pattern="[0-9]+:[0-9][0-9]"  >

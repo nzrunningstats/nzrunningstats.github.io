@@ -23,7 +23,7 @@
 
 body { 
 	font-family: Arial; 
-	width:100vw;
+	width:100%;
 	max-width:100%;
 	margin:0px;
 	font-size:40px;
@@ -85,7 +85,7 @@ a {
 
 
 .header {
-	background-color: red; %#57595D;
+	background-color: #57595D;
 	color:white;
 	min-width:100%;
 	max-width:100%;

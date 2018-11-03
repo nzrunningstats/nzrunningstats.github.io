@@ -57,6 +57,15 @@ h2 {
 }
 
 
+.linkspan.smallfont{
+
+
+	font-size:28px;
+	
+}
+
+
+
 .linkspan:hover{
 	
 	background-color:rgb(87,89,93, 1);
@@ -140,9 +149,16 @@ a {
 	background-color:rgb(87,89,93, 0.8); 
 	background:rgb(87,89,93, 0.8); 
 	padding: 5px 5px;
-	%width:4em;
-	%width:170px;
+
 	
+	
+}
+
+
+.userInput.fw{
+
+	width:4em;
+
 	
 }
 

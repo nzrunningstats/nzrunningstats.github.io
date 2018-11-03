@@ -122,8 +122,8 @@ function renderResultsTable(eventwebsites, marathonresults, race = "halfmarathon
 				 
 				 
 				 <td rowspan=1 style="text-align:center">
-					<a target="_blank" style="text-decoration:none; color: white" href="` + eventwebsites.website[i] + `" title="Visit course website">
-						<span style="padding: 3px; background-color:#57595D">
+					<a target="_blank" style="text-decoration:none;" href="` + eventwebsites.website[i] + `" title="Visit course website">
+						<span class="linkspan  smallfont">
 							Visit
 						</span>
 					</a>
@@ -164,10 +164,9 @@ function renderResultsTable(eventwebsites, marathonresults, race = "halfmarathon
 						 
 						 
 						 
-						 
 						 <td rowspan=1 style="text-align:center">
-							<a target="_blank" style="text-decoration:none; color: white; font-size:12px" href="` + eventwebsites.website[i] + `" title="Visit event website">
-								<span style="padding: 3px; background-color:#57595D">
+							<a target="_blank" style="text-decoration:none;" href="` + eventwebsites.website[i] + `" title="Visit course website">
+								<span class="linkspan smallfont">
 									Visit
 								</span>
 							</a>

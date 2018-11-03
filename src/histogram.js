@@ -131,7 +131,7 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	drawSVGobj(svg, "text", {x: width/2, y: height - axisGap_y + 2*axisPointMargin, text_anchor:"middle", style:"font-size:" + axisLabelSize + "px; fill:" + textCol }, "Completion time (hours)");
 	
 	// Dont print all the x labels if there are too many
-	var printEvery = Math.ceil(hist_obj_breaks.length / (18 * mobileMultiplier)); //hist_obj_breaks.length 
+	var printEvery = Math.ceil(hist_obj_breaks.length / (18 / mobileMultiplier)); //hist_obj_breaks.length 
 	console.log("printEvery", printEvery, hist_obj_breaks.length);
 	
 	// x-ticks

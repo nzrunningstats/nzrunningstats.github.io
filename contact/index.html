@@ -97,7 +97,7 @@ function init(){
 	
 	if (stylesheet != "styles") {
 		$('head').find("link").remove();
-		$('head').append('<link rel="stylesheet" type="text/css" href="src/' + stylesheet + '.css">');
+		$('head').append('<link rel="stylesheet" type="text/css" href="../src/' + stylesheet + '.css">');
 	}
 
 
@@ -123,46 +123,10 @@ function init(){
 			<div id="main" style="background-color:white">
 				
 				
-				<div id="header" class="header" style="width:100%; ">
-					<table style="margin: 0px auto; width:100%">
-						
-
-					
-						<tr>
-							<td style="height:30px; width: 20%; vertical-align:bottom; ">
-							</td>
-
-
-
-
-
-
-							 <td  style="color:white; text-align:center; font-size: 20px; vertical-align:top; font-family: 'Arial'; width: 60%;"> 
-								<div style="width:100%; text-align:center;">
-
-								    <div style="font-size: 70px; margin-bottom: -5px "> NZ Running Stats </div>
-								    <div style="font-size: 20px; "> A statistical summary of marathons from across New Zealand  </div>
-								    
-								    
-								</div>
-								        
-							 </td>
-							    
-                            
-
-                            				<td style="height:30px; width: 20%; vertical-align:bottom; text-align:right;"> 
-
-
-
-                                    
-                           				 </td>
-
-
-
-						</tr>
-
-						
-					</table>
+				<div id="header" class="header" style="width:100%;">
+					<div class="maintitle"> NZ Running Stats</div>
+					<div class="subtitle"> A statistical summary of marathons from across New Zealand  </div>
+				</div>
 				</div>
 		
 				<div class="tabs-bg">

@@ -36,28 +36,29 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	
 	var pageWidth = screen.width;
 	var maxWidth = 1200;
-	var mobileMultiplier = pageWidth < maxWidth ? 1.6 : 1;
-	var width = mobileMultiplier == 1 ? maxWidth : $(document).width();
+	var mobileMultiplierFont = pageWidth < maxWidth ? 1.8 : 1;
+	var mobileMultiplierGaps = pageWidth < maxWidth ? 1.6 : 1;
+	var width = mobileMultiplierFont == 1 ? maxWidth : $(document).width();
 	var pageWidthScale = width / maxWidth;
 	var height = 600;
 	
 	
 	
 	
-	console.log("width", pageWidth, mobileMultiplier, pageWidthScale);
+	console.log("width", pageWidth, mobileMultiplierFont, pageWidthScale);
 	
 	
 	// Plot constants
-	var axisGap_x = 150 * pageWidthScale;
-	var axisGap_y = 60 * pageWidthScale;
+	var axisGap_x = 150 * pageWidthScale * mobileMultiplierGaps;
+	var axisGap_y = 60 * pageWidthScale * mobileMultiplierGaps;
 	var gapBetweenBars = 5 * pageWidthScale;
-	var axisPointMargin = 25 * pageWidthScale;
-	var tickLength = 10 * pageWidthScale * mobileMultiplier;
-	var axisLabelSize = 25 * pageWidthScale * mobileMultiplier;
-	var axisValFontSize = 12 * pageWidthScale * mobileMultiplier;
-	var axisStrokeWidth = 2 * pageWidthScale * mobileMultiplier;
-	var hoverLabelFontSize = 16 * pageWidthScale * mobileMultiplier;
-	var summaryStatFontSize = 16 * pageWidthScale * mobileMultiplier;
+	var axisPointMargin = 25 * pageWidthScale * mobileMultiplierGaps;
+	var tickLength = 10 * pageWidthScale * mobileMultiplierFont;
+	var axisLabelSize = 25 * pageWidthScale * mobileMultiplierFont;
+	var axisValFontSize = 12 * pageWidthScale * mobileMultiplierFont;
+	var axisStrokeWidth = 2 * pageWidthScale * mobileMultiplierFont;
+	var hoverLabelFontSize = 16 * pageWidthScale * mobileMultiplierFont;
+	var summaryStatFontSize = 16 * pageWidthScale * mobileMultiplierFont;
 	var axisCol = "#57595D";
 	var gridCol = "rgb(87,89,93, 0.2);"
 	var textCol = "black";

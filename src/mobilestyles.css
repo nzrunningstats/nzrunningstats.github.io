@@ -264,7 +264,7 @@ input::-webkit-inner-spin-button {
 
 	color:white;
 	background-color:#57595D;
-	font-size:22px;
+	font-size:20px;
 	
 	
 }
@@ -331,18 +331,18 @@ td b.sort-by {
 b.sort-by:before,
 b.sort-by:after {
 	font-size:60px;
-	border: 10px solid transparent;
+	border: 8px solid transparent;
 	content: "";
 	display: block;
 	height: 0;
-	right: 5px;
+	right: 0px;
 	top: 50%;
 	position: absolute;
 	width: 0;
 }
 b.sort-by:before {
 	border-bottom-color: white;
-	margin-top: -25px;
+	margin-top: -22px;
 }
 b.sort-by:after {
 	border-top-color: white;

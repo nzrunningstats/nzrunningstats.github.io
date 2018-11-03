@@ -50,7 +50,7 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	
 	// Plot constants
 	var axisGap_x = 150 * pageWidthScale * mobileMultiplierGaps;
-	var axisGap_y = 60 * pageWidthScale * mobileMultiplierGaps;
+	var axisGap_y = 60 * pageWidthScale * mobileMultiplierFont;
 	var gapBetweenBars = 5 * pageWidthScale;
 	var axisPointMargin = 25 * pageWidthScale * mobileMultiplierFont;
 	var tickLength = 10 * pageWidthScale * mobileMultiplierFont;

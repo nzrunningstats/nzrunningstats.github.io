@@ -37,7 +37,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 	
 	
 	var pageWidth = screen.width;
-	var maxWidth = 1400;
+	var maxWidth = 1200;
 	var mobileMultiplierFont = pageWidth < maxWidth ? 1.9 : 1;
 	var mobileMultiplierGaps = pageWidth < maxWidth ? 0.5 : 1;
 	var width = mobileMultiplierFont == 1 ? maxWidth : $(document).width();
@@ -51,7 +51,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 	
 	
 	// Plot constants
-	var axisGap_x = 260 * pageWidthScale * mobileMultiplierGaps;
+	var axisGap_x = 260 * pageWidthScale * mobileMultiplierFont;
 	var axisGap_y = 60 * pageWidthScale * mobileMultiplierFont;
 	var heightPerRow = 25 * pageWidthScale * mobileMultiplierFont;
 	var errorCircleRadius = 4 * pageWidthScale * mobileMultiplierFont;
@@ -295,7 +295,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 			
 			// Detect if in error bar region
 			var msg = "";
-			if ($(this).hasClass("errorBar" + row)) msg = "Standard error = " + roundToSF(stderr);
+			if ($(this).hasClass("errorBar" + row)) msg = "S.E. = " + roundToSF(stderr);
 			else if (coeff == 0) msg = "Baseline (n=" + n + ")";
 			else msg = Math.abs(roundToSF(coeff)) + " " +  (above ? " above " : " below ") + " baseline (n=" + n + ")";
 			

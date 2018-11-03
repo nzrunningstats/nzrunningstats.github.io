@@ -135,12 +135,7 @@ a {
 }
 
 
-#results_table{
-	
-	font-size:25px;
-	
-	
-}
+
 
 .userInput{
 	
@@ -253,7 +248,7 @@ input::-webkit-inner-spin-button {
 
 .results-row{
 
-	font-size:35px;
+	font-size:25px;
 	font-family: Arial; 
 	
 }

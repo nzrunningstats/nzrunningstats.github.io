@@ -323,3 +323,12 @@ b.sort-by:after {
 	border-top-color: white;
 	margin-top: 1px;
 }
+
+
+.nbar{
+	position:absolute; 
+	background-color:#57595D; 
+	height: 14px; 
+	margin-top: -6px;  
+	cursor: auto
+}

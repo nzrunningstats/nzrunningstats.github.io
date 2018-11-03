@@ -75,7 +75,7 @@ function renderResultsTable(eventwebsites, marathonresults, race = "halfmarathon
 				if (marathonresults.course[j] == eventwebsites.course[i]) {
 					dates.push(marathonresults.event[j]);
 					nparticipants.push(
-						`<div value="` +  marathonresults.n[j] + `" title="` + marathonresults.n[j] + ` participants" style="position:absolute; background-color:#57595D; width:` + 180 * marathonresults.n[j] / max_n_participants + `px; height: 14px; margin-top: -6px;  cursor: auto"></div><br style="line-height:2px">`);
+						`<div class="nbar" value="` +  marathonresults.n[j] + `" title="` + marathonresults.n[j] + ` participants" style="width:` + 180 * marathonresults.n[j] / max_n_participants + `px;"></div><br style="line-height:2px">`);
 					
 					femaleFirsts.push(marathonresults.female1[j].substr(0, 8));
 					maleFirsts.push(marathonresults.male1[j].substr(0, 8));

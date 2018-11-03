@@ -233,7 +233,7 @@ input::-webkit-inner-spin-button {
 
 	font-size:14px;
 	font-family: Arial; 
-	line-height:18px
+	%line-height:18px
 	
 }
 
@@ -330,7 +330,7 @@ b.sort-by:after {
 	position:relative; 
 	background-color:#57595D; 
 	height: 1em; 
-	margin-top: 0.1em;  
-	margin-bottom: 0.1em;  
+	margin-top: 2.8px;
+	margin-bottom: 2.8px;
 	cursor: auto
 }

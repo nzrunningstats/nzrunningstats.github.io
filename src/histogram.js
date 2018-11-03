@@ -42,6 +42,10 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	var mobileMultiplier = pageWidth < 1200 ? 2.2 : 1;
 	
 	
+	
+	console.log("width", pageWidth, mobileMultiplier, pageWidthScale);
+	
+	
 	// Plot constants
 	var axisGap_x = 150 * pageWidthScale;
 	var axisGap_y = 60 * pageWidthScale;

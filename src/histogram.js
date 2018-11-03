@@ -28,7 +28,13 @@ function plot_histogram(svg_id, hist_obj, course = "Total"){
 	
 	if (svg == null) return "Error finding " + svg_id;
 	
-	var pageWidth = $(document).width();
+	
+	svg.on( "orientationchange", function( event ) {
+		plot_histogram(svg_id, hist_obj, course);
+	});
+	
+	
+	var pageWidth = screen.width;
 	var maxWidth = 1200;
 	var width = Math.min(maxWidth, pageWidth);
 	var pageWidthScale = width / maxWidth;

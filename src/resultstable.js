@@ -40,7 +40,7 @@ function renderResultsTable(eventwebsites, marathonresults, race = "halfmarathon
 		
 			<tr class="header-row">
 			
-				 <td col="course" title="Location of the half-marathon" style="text-align:center"><b class="sort-by">Half-marathon course</b></td>
+				 <td col="course" title="Location of the course" style="text-align:center"><b class="sort-by">Course</b></td>
 				 <td col="event" id="event" title="Date of the half-marathon" style="text-align:center; width: 80px"><b class="sort-by">Event</b></td>
 				 <td col="n" id="participantTD" title="Number of participants in the half-marathon" style="text-align:center; min-width: 180px; width:180px"><b class="sort-by">Number of participants</b></td>
 				 <td col="female1" title="Completion time of the 1st place female participant" style="text-align:center"><b class="sort-by">1st place female</b></td>

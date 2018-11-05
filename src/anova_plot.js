@@ -24,6 +24,9 @@ textLabelPadding = 4;
 
 // Generates a plot of anova results
 function plot_anova(svg_id, region_anova, event_anova = null){
+
+
+	var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 	
 	var svg = $(svg_id);
 	
@@ -123,8 +126,12 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 	// Draw the ANOVA coefficients
 	var xCenter = widthScale * (0 - xmin) + axisGap_x;
 	region_anova.eventsInRegion = [];
+	var cursorStyle = is_safari ? "auto" : "pointer";
+	var expandTitle = is_safari ? "" : "<title>Display events</title>";
 	for (var row = 0; row < region_anova.nrows; row ++){
 		
+
+
 		
 		// --- Regional data --- 
 		var coeff = region_anova.coefficients[row];
@@ -153,8 +160,8 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 		drawSVGobj(svg, "rect", {id: "row" + row, x: x, y: y, yOrig: y, width: w, height: heightPerRow, 
 								row: row, 
 								region: row,
-								style: "cursor:" + (eventsInRegion.length > 0 ? "pointer" : "auto"),
-								class:  (eventsInRegion.length > 0 ?  "clickrow" + row + " " : "") + (row % 2 == 1 ? "anova-bar-odd" : "anova-bar-even")}, "<title>Display events</title>");
+								style: "cursor:" + (eventsInRegion.length > 0 ? cursorStyle : "auto"),
+								class:  (eventsInRegion.length > 0 ?  "clickrow" + row + " " : "") + (row % 2 == 1 ? "anova-bar-odd" : "anova-bar-even")}, expandTitle);
 		
 		
 		
@@ -183,11 +190,12 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 		//drawSVGobj(svg, "text", {row: row, x: xCenter + (coeff >= 0 ? -gapBetweenRows : gapBetweenRows), y: y + heightPerRow/2 + 5, text_anchor: coeff >= 0 ? "end" : "start", style: "font-size: 15px; fill:" + textCol}, event);
 		if (coeff >= 0){
 			var eventX = Math.min(xCenter, x + w - errorBarLen) - gapBetweenRows;
-			drawSVGobj(svg, "text", {class: "clickrow" + row, region: row, row: row, x: eventX, y: y + heightPerRow/2 + 5, text_anchor: "end", style: "cursor:pointer; font-size: " + courseNameFontSize + "px; fill:" + textCol}, evnt + "<title>Display events</title>");
+			
+			drawSVGobj(svg, "text", {class: "clickrow" + row, region: row, row: row, x: eventX, y: y + heightPerRow/2 + 5, text_anchor: "end", style: "cursor:" + cursorStyle + "; font-size: " + courseNameFontSize + "px; fill:" + textCol}, evnt + expandTitle);
 		}
 		else{
 			var eventX = Math.max(xCenter, x + errorBarLen) + gapBetweenRows;
-			drawSVGobj(svg, "text", {class: "clickrow" + row, region: row, row: row, x: eventX, y: y + heightPerRow/2 + 5, text_anchor: "start", style: "cursor:pointer; font-size: " + courseNameFontSize + "px; fill:" + textCol}, evnt + "<title>Display events</title>");
+			drawSVGobj(svg, "text", {class: "clickrow" + row, region: row, row: row, x: eventX, y: y + heightPerRow/2 + 5, text_anchor: "start", style: "cursor:" + cursorStyle + "; font-size: " + courseNameFontSize + "px; fill:" + textCol}, evnt + expandTitle);
 		}
 		
 		
@@ -195,7 +203,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 		
 		// --- Course data --- 
 		// Set everything to hidden
-		for (var k = 0; k < eventsInRegion.length; k ++){
+		for (var k = 0; !is_safari && k < eventsInRegion.length; k ++){
 			
 			var eventIndex = eventsInRegion[k];
 			
@@ -367,7 +375,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 		
 		svg.find(".clickrow" + row).click(function(){
 			
-			if (event_anova == null) return;
+			if (event_anova == null || is_safari) return;
 
 			var row = parseFloat($(this).attr("row"));
 			var ele = svg.find("#row" + row);

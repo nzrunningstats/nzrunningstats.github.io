@@ -48,13 +48,8 @@ body {
 .linkspan{
 
 	padding: 3px; 
-<<<<<<< HEAD
 	background:rgba(87,89,93, 0.8);
 	color:white;
-=======
-	%background:rgba(87,89,93, 0.8);
-	%color:white;
->>>>>>> ba94fa8fab50b307b19475f29dbd9b42300eab5a
 	margin-right:20px;
 	font-size:18px;
 	

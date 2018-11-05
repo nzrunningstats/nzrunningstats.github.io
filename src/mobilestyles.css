@@ -49,7 +49,7 @@ h2 {
 .linkspan{
 
 	padding: 8px 8px; 
-	background-color:rgb(87,89,93, 0.8);
+	background-color:rgba(87,89,93, 0.8);
 	color:white;
 	margin-right:30px;
 	font-size:40px;
@@ -69,7 +69,7 @@ h2 {
 
 .linkspan:hover{
 	
-	background-color:rgb(87,89,93, 1);
+	background-color:rgba(87,89,93, 1);
 }
 
 
@@ -115,7 +115,7 @@ a {
 	margin-right:15px;
 	margin-top:30px;
 	%margin-bottom:-5px;
-	background-color:rgb(87,89,93, 0.8);
+	background-color:rgba(87,89,93, 0.8);
 	border-radius:10px 10px 0px 0px;
 	-webkit-border-radius:10px 10px 0px 0px;
 	-moz-border-radius:10px 10px 0px 0px;
@@ -127,7 +127,7 @@ a {
 
 .tab:hover{
 	
-	background-color:rgb(87,89,93, 1);
+	background-color:rgba(87,89,93, 1);
 }
 
 
@@ -146,8 +146,8 @@ a {
 	
 	font-size: 35px; 
 	color:black; 
-	%background-color:rgb(87,89,93, 0.8); 
-	%background:rgb(87,89,93, 0.8); 
+	%background-color:rgba(87,89,93, 0.8); 
+	%background:rgba(87,89,93, 0.8); 
 	padding: 5px 5px;
 
 	
@@ -205,7 +205,7 @@ input::-webkit-inner-spin-button {
 
 
 .anova-bar-odd {
-	fill:rgb(87,89,93, 0.8); %#57595D;
+	fill:rgba(87,89,93, 0.8); %#57595D;
 	stroke-width:0;
 	stroke:black;
 	%fill-opacity: 0.7;
@@ -217,7 +217,7 @@ input::-webkit-inner-spin-button {
 	 background-color:#d3d3d3;
 	% border:solid;
 	 %border-width:3px;
-	 %border-color:rgb(87,89,93, 1);
+	 %border-color:rgba(87,89,93, 1);
 	 font-size:50px;
 	 text-align:center; 
 	 padding: 10px 10px; 
@@ -227,7 +227,7 @@ input::-webkit-inner-spin-button {
 }
 
 .anova-bar-odd.selected  {
-	fill:rgb(87,89,93, 1);
+	fill:rgba(87,89,93, 1);
 	stroke-width:0;
 	stroke:black;
 	%fill-opacity: 1;
@@ -236,7 +236,7 @@ input::-webkit-inner-spin-button {
 
 
 .anova-bar-even {
-	fill: rgb(0,154,205, 0.8); %  rgb(250,190,40, 0.8); %#FABE28;
+	fill: rgba(0,154,205, 0.8); %  rgba(250,190,40, 0.8); %#FABE28;
 	stroke-width:0;
 	stroke:black;
 	%fill-opacity: 0.7;
@@ -245,7 +245,7 @@ input::-webkit-inner-spin-button {
 
 
 .anova-bar-even.selected {
-	fill:rgb(0,154,205,  1); % rgb(250,190,40,1);
+	fill:rgba(0,154,205,  1); % rgba(250,190,40,1);
 	stroke-width:0;
 	stroke:black;
 	%fill-opacity: 1;
@@ -272,7 +272,7 @@ input::-webkit-inner-spin-button {
 
 
 .results-row:nth-child(odd){
-	background-color:rgb(87,89,93, 0.2);
+	background-color:rgba(87,89,93, 0.2);
 }
 
 
@@ -282,8 +282,8 @@ input::-webkit-inner-spin-button {
 
 
 .error-bar-odd {
-	stroke:rgb(0,154,205,  1); %rgb(250,190,40,1);
-	fill:rgb(0,154,205,  1); %rgb(250,190,40,1);
+	stroke:rgba(0,154,205,  1); %rgba(250,190,40,1);
+	fill:rgba(0,154,205,  1); %rgba(250,190,40,1);
 	stroke-width:2.5;
 	 
 }
@@ -297,8 +297,8 @@ input::-webkit-inner-spin-button {
 
 
 .error-bar-even {
-	stroke:rgb(87,89,93, 1);
-	fill:rgb(87,89,93, 1);
+	stroke:rgba(87,89,93, 1);
+	fill:rgba(87,89,93, 1);
 	stroke-width:2.5;
 	 
 }

@@ -544,6 +544,18 @@ function drawSVGobj(svg, type, attr, val = null, addBackground = false){
 		else newObj.setAttribute(a, attr[a]);
 	}
 	if (val != null) newObj.innerHTML = val;
+
+
+
+	// Set some of the styles as attributes because safari and IE do not like styles for svgs
+	var styles = getComputedStyle(newObj);
+	if (styles.fill != null) newObj.setAttribute("fill", styles.fill);
+	if (styles.stroke != null) newObj.setAttribute("stroke", styles.stroke);
+	if (styles["stroke-width"] != null) newObj.setAttribute("stroke-width", styles["stroke-width"]);
+
+	//console.log(styles["stroke-width"]);
+
+
 	svg.append(newObj);
 	
 	// Add a background box behind the label
@@ -562,6 +574,9 @@ function drawSVGobj(svg, type, attr, val = null, addBackground = false){
 
 	
 	}
+
+
+	
 	
 	
 	return newObj;

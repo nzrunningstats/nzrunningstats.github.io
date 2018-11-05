@@ -51,6 +51,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 	
 	
 	// Plot constants
+	var numStandardErrors = 1;
 	var axisGap_x = 260 * pageWidthScale * mobileMultiplierGaps;
 	var axisGap_y = 60 * pageWidthScale * mobileMultiplierFont;
 	var heightPerRow = 25 * pageWidthScale * mobileMultiplierFont;
@@ -128,7 +129,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 		// --- Regional data --- 
 		var coeff = region_anova.coefficients[row];
 		var evnt = region_anova.event[row];
-		var stderr = region_anova.stderr[row];
+		var stderr = numStandardErrors * region_anova.stderr[row];
 		
 		
 		
@@ -158,7 +159,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 		
 		
 		// Draw a mean + error bar
-		var errorBarLen =  stderr * widthScale;
+		var errorBarLen =  stderr * numStandardErrors * widthScale;
 		drawSVGobj(svg, "line", {
 			row: row,
 			region: row,
@@ -201,7 +202,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 			
 			var coeff_event = event_anova.coefficients[eventIndex];
 			var evnt_event = event_anova.event[eventIndex];
-			var stderr_event = event_anova.stderr[eventIndex];
+			var stderr_event = numStandardErrors * event_anova.stderr[eventIndex];
 			
 			// Rectangle bar
 			
@@ -282,6 +283,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 			var coeff = showingRegions ? region_anova.coefficients[row] : event_anova.coefficients[region_anova.eventsInRegion[row][erow]];
 			var n = showingRegions ? region_anova.n[row] :  event_anova.n[region_anova.eventsInRegion[row][erow]];
 			var stderr = showingRegions ? region_anova.stderr[row] :  event_anova.stderr[region_anova.eventsInRegion[row][erow]];
+			stderr = numStandardErrors * stderr;
 			var gap = showingRegions ? gapBetweenRows : gapBetweenEventRows;
 			var barheight = showingRegions ? heightPerRow : heightPerEventRow;
 			var dy = showingRegions ? 0 : (heightPerEventRow + gapBetweenEventRows) * erow;
@@ -295,7 +297,7 @@ function plot_anova(svg_id, region_anova, event_anova = null){
 			
 			// Detect if in error bar region
 			var msg = "";
-			if ($(this).hasClass("errorBar" + row)) msg = "S.E. = " + roundToSF(stderr);
+			if ($(this).hasClass("errorBar" + row)) msg = numStandardErrors + " S.E. = " + roundToSF(stderr);
 			else if (coeff == 0) msg = "Baseline (n=" + n + ")";
 			else msg = Math.abs(roundToSF(coeff)) + " " +  (above ? " above " : " below ") + " baseline (n=" + n + ")";
 			

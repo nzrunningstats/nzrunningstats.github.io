@@ -45,10 +45,10 @@
 
 
 
-<title>Half-marathon stats</title>
+<title>10km race stats</title>
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="New Zealand half-marathon statistical summaries." />
+<meta name="description" content="New Zealand 10km race statistical summaries." />
 <link rel="stylesheet" type="text/css" href="../src/styles.css">
 <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 1200px)" href="../src/mobilestyles.css" />
 <link rel="icon" href="../src/Images/logo.svg">
@@ -129,7 +129,6 @@ function init(){
 			if (halfMarathonCourseANOVA.event[i][0] == "*") halfMarathonCourseANOVA.event[i] = halfMarathonCourseANOVA.event[i].substr(1);
 
 
-
 			// Capital on events
 			var event_split = halfMarathonCourseANOVA.event[i].split("-");
 			halfMarathonCourseANOVA.event[i] = "";
@@ -156,8 +155,8 @@ function init(){
 			
 		
 		
-		$("#userRanMarathon_dropdown").val("Auckland");
-		$("#userQueryMarathon_dropdown").val("Christchurch");
+		$("#userRanMarathon_dropdown").val("Wellington Round The Bays");
+		$("#userQueryMarathon_dropdown").val("Queenstown");
 		//console.log("halfMarathonCourseANOVA", halfMarathonCourseANOVA);
 		queryHalfMarathon();
 		
@@ -328,7 +327,6 @@ function init(){
 			var max_n_participants = 0;
 			for (var i = 0; i < marathonresults.nrows;i ++){
 			
-
 
 				if (marathonresults.course[i][0] == "*") marathonresults.course[i] = marathonresults.course[i].substr(1);
 
@@ -519,8 +517,8 @@ function loadCSV(url, resolve = function(result) { }){
 					<div style="text-align:center; margin-right:0px;">
 						<a href="../"> <span class="tab">Home</span></a>
 						<a href="../marathon/"> <span class="tab">Marathon stats</span></a>
-						<span class="tab selected">Half-marathon stats</span>
-						<a href="../10km/"> <span class="tab">10km race stats</span></a>
+						<a href="../half-marathon/"> <span class="tab">Half-marathon stats</span></a>
+						<span class="tab selected">10km race stats</span>
 						<a href="../contact/"> <span class="tab">Contact us</span></a>
 					</div>
 				</div>
@@ -536,13 +534,13 @@ function loadCSV(url, resolve = function(result) { }){
 				<div class="display-div">
 
 					
-					<h1> Half-marathon statistics</h1>
+					<h1> 10km race statistics</h1>
 							
 					<div class="caption-div">
 					
 						
-						The half-marathon has an official distance of 21.0975 km and takes an average of around two hours and ten minutes for a runner to complete. This is equal to a pace of 6:09 min/km.
-						Refer to the table further down this page if you are interested in any of the half-marathon courses.
+						The 10km race takes an average of around one hour for a runner to complete. This is equal to a pace of 6 min/km.
+						Refer to the table further down this page if you are interested in any of the 10km race courses.
 						
 					
 						
@@ -574,8 +572,8 @@ function loadCSV(url, resolve = function(result) { }){
 					</svg>
 										
 					<div class="caption-div">
-						<b>Effect of course on half-marathon completion time.</b> Slower courses have a greater time estimates of $\beta_\text{course}$. To control for the difference
-						between walkers and runners, participants who took more than 2.5 hours were discarded
+						<b>Effect of course on 10km race completion time.</b> Slower courses have a greater time estimates of $\beta_\text{course}$. To control for the difference
+						between walkers and runners, participants who took more than 80 minutes were discarded
 						from the dataset when building this model. Hover over the bars or standard error bars for more information. 
 						
 						
@@ -585,9 +583,9 @@ function loadCSV(url, resolve = function(result) { }){
 							
 									<select onChange='queryHalfMarathon();' id="userRanMarathon_dropdown" class="userInput" title="Select a course"></select> 
 									
-							half-marathon in
+							10km race in
 							
-							 <input onFocus="this.select();" onChange='queryHalfMarathon();'  class="userInput fw" style=" text-align:center"  type="text" onChange='' value="2:00:00"  id="userRanMarathon_time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-9][0-9]"  title="How long did you take to complete this course?" >
+							 <input onFocus="this.select();" onChange='queryHalfMarathon();'  class="userInput fw" style=" text-align:center"  type="text" onChange='' value="1:00:00"  id="userRanMarathon_time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-9][0-9]"  title="How long did you take to complete this course?" >
 
 							 hours. For the same effort, in the same form, and assuming average conditions, how long would I take at 
 							 
@@ -627,7 +625,7 @@ function loadCSV(url, resolve = function(result) { }){
 					</svg>
 										
 					<div class="caption-div">
-						<b>Distribution of half-marathon completion times.</b> Unlike the previous plot, this plot displays raw data. All participants are included here regardless of how many half-marathons they
+						<b>Distribution of 10km race completion times.</b> Unlike the previous plot, this plot displays raw data. All participants are included here regardless of how many 10km races they
 							have run or how long they took to complete it.
 					</div>
 

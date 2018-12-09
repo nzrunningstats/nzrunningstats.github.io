@@ -343,7 +343,7 @@ function init(){
 				// Capital on events plus have name first and date last
 				var event_split = marathonresults.event[i].split("-");
 				if (event_split.length >= 3){
-					marathonresults.event[i] = event_split[0]; // event_split[2] + " / " + event_split[1] +   " / " + event_split[0]; // DD / MM / YYYY	
+					marathonresults.event[i] = event_split[0] + "." + event_split[1] + "." + event_split[2]; // event_split[2] + " / " + event_split[1] +   " / " + event_split[0]; // DD / MM / YYYY	
 				}
 				if (marathonresults.event[i][0] == "*") marathonresults.event[i] = marathonresults.event[i].substr(1);
 			}

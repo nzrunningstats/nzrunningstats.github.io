@@ -19,6 +19,7 @@
     --------------------------------------------------------------------
 -->
 
+
 <html>
 <head>
 
@@ -34,7 +35,6 @@
 </script>
 
 
-
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
@@ -45,10 +45,9 @@
 
 
 
-<title>10km race stats</title>
-
+<title>Version history</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="New Zealand 10km race statistical summaries." />
+<meta name="description" content="New Zealand marathon statistical summaries." />
 <link rel="stylesheet" type="text/css" href="../src/styles.css">
 <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 1200px)" href="../src/mobilestyles.css" />
 <link rel="icon" href="../src/Images/logo.svg">
@@ -76,22 +75,22 @@
 
 
 
+
 <script language='JavaScript' type='text/JavaScript'>
 
 
 function init(){
 
+	$("#versionDIV a").addClass("githublink");
+	$("#versionDIV a").attr("title", "View on GitHub");
 
-	addHeaderHTML("#headerDIV", "10km");
-
-	populatePage();
-
-            
-
+	
+	addHeaderHTML("#headerDIV", "version");
+    
 }
 
 
-	
+
 
 
 
@@ -111,27 +110,59 @@ function init(){
 				
 
 			<div id="main" style="background-color:white">
-			
+				
 				<div id="headerDIV"></div> 
-
+   
+   		
 				
-   
-   
-   
-				
-				<div class="display-div">
+				<div id="versionDIV" class="display-div">
 
 					
-					<h1> 10km race statistics</h1>
+					<h1> Version history </h1>
 							
 					<div class="caption-div">
 					
 						
-						The 10km race takes an average of around one hour for a runner to complete. This is equal to a pace of 6 min/km.
-						Refer to the table further down this page if you are interested in any of the 10km race courses.
 						
-					
-						
+							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.0">Version 1.0</a> (2018-11-29)</b>
+							<ul> 
+								<li> First version including marathon, half marathon and 10km results
+							</ul>
+
+							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.1">Version 1.1</a> (2018-11-29)</b>
+							<ul> 
+								<li> Added 2015-2018 Mountain to Surf Marathons (now clear that this is a fast marathon as wisdom of crowds predicted)
+								<li> Removed marathons before 2014 (this avoids Wellington 2013 which was short).
+							</ul>
+
+							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.2">Version 1.2</a> (2018-12-02)</b>
+							<ul> 
+							    <li> All marathons now ranked using last 5 years where available (added 2014 Mountain to Surf Marathons (now ranked fastest), and added 2014-2015 Buller marathon)
+								<li> Added 2014-2018 Feilding Marathon (New Zealand's longest running marathon)
+								<li> Added 2016-2018 Mountain to Surf half marathons
+								<li> Added 2016-2018 Cambridge half marathons
+								<li> Added 2018 Tauranga City to Surf half marathon
+								<li> Removed bogus 2017 Omaha half marathon from Nebraska (lol) and added today's 2018 Omaha half marathon
+ 							</ul>
+ 							
+ 							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.3">Version 1.3</a> (2018-12-09)</b>
+							<ul> 
+							    <li> Added 2015 New Plymouth 10km in place of 2016 New Plymouth 10km which is missing division data.
+							    <li> Added 2017 Southern lakes 10km race.
+							    <li> Added 2016-2018 Albany Lakes 10km series races (3 races per year = 9 races)
+							</ul>
+							
+							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.4">Version 1.4</a> (2018-12-09)</b>
+
+							<ul>
+								<li>Fixed bug which caused times faster than 1hr to be ignored in following 10 races
+									<ul>
+										<li> 2015-2018 manawatu-striders 10km
+										<li> 2015-2017 new-plymouths 10km
+										<li> 2016 huntly and taupo 10km races
+										<li> 2017 southern-lakes 10km race
+									</ul>
+							</ul>
 					
 					
 						
@@ -140,106 +171,11 @@ function init(){
 
 				</div>
 
-
-
-
-
+   
    
 			  
 	
    
-
-			   
-				<div id="anova_div" class="display-div" style="display:none;">
-
-					<br><br><br><br>
-					<svg id="anovaRegion_svg" style="margin:auto"  xmlns="http://www.w3.org/2000/svg" version="1.1">
-						
-						Sorry, your browser does not support inline SVG.
-						
-					</svg>
-										
-					<div class="caption-div">
-						<b>Effect of course on 10km race completion time.</b> Slower courses have a greater time estimates of $\beta_\text{course}$. To control for the difference
-						between walkers and runners, participants who took more than 80 minutes were discarded
-						from the dataset when building this model. Hover over the bars or standard error bars for more information. 
-						
-						
-						<div class="query"> 
-
-							<b>Query:</b> I ran the 
-							
-									<select onChange='queryHalfMarathon();' id="userRanMarathon_dropdown" class="userInput" title="Select a course"></select> 
-									
-							10km race in
-							
-							 <input onFocus="this.select();" onChange='queryHalfMarathon();'  class="userInput fw" style=" text-align:center"  type="text" onChange='' value="1:00:00"  id="userRanMarathon_time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-9][0-9]"  title="How long did you take to complete this course?" >
-
-							 hours. For the same effort, in the same form, and assuming average conditions, how long would I take at 
-							 
-							 <select onChange='queryHalfMarathon();' id="userQueryMarathon_dropdown" class="userInput" title="Select a course"></select> 
-							 
-							 ?
-							 <div style="height:20px"></div>
-							 
-							 <b>Response:</b> <span id="userResponseMarathon"></span> 
-							 
-						</div>
-						
-						
-					</div>
-
-
-				</div>
-				
-	
-				
-				
-				
-				
-				<div  id="histogram_div"  class="display-div" style="display:none;">
-
-					<br><br><br><br>
-					
-					
-					Event: <select onChange='plot_histogram("halfMarathonHistogram_svg", hist_data, $(this).val())' id="halfMarathonHistogram_dropdown" class="userInput" title="Select an event">
-						 
-					</select> 
-					<br>
-					<svg id="halfMarathonHistogram_svg" style="margin:auto"  xmlns="http://www.w3.org/2000/svg" version="1.1">
-						
-						Sorry, your browser does not support inline SVG.
-						
-					</svg>
-										
-					<div class="caption-div">
-						<b>Distribution of 10km race completion times.</b> Unlike the previous plot, this plot displays raw data. All participants are included here regardless of how many 10km races they
-							have run or how long they took to complete it.
-					</div>
-
-
-				</div>
-
-
- 
-				<div id="results_div"  class="display-div" style="display:none;">
-
-					<br><br><br><br>
-					<table border=0 cellspacing=0 cellpadding=6 id="results_table" style="margin:auto">
-						
-						
-						
-					</table>
-					
-
-
-				</div>
-				
-
-	
-	
-	
-	
 	<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 	<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
 

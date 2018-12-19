@@ -48,6 +48,7 @@
 <script language='JavaScript' type='text/JavaScript' src="src/jquery-3.1.1.min.js"></script>
 <script language='JavaScript' type='text/JavaScript' src="src/velocity.min.js"></script>
 <script language='JavaScript' type='text/JavaScript' src="src/resultstable.js"></script>
+<script language='JavaScript' type='text/JavaScript' src="src/includeHTML.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
@@ -69,6 +70,9 @@
 
 function init(){
 
+
+	addHeaderHTML("#headerDIV", "home");
+	
 
 	// Mobile
 	var is_mobile = (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
@@ -96,19 +100,22 @@ function init(){
 	
 	if (isIE || isEdge) $("#pacecalculator").hide(0);
 	 
+	 
+	
 
 
 	queryPaceCalulator(true);
 	
 	console.log("width",  $(document).width(), screen.width, screen.height);
 
-            
+    
 
 }
 
 
 function queryPaceCalulator(from_speed = true){
 
+	
 
 	if (from_speed){
 	
@@ -155,29 +162,7 @@ function queryPaceCalulator(from_speed = true){
 			<div id="main" style="background-color:white">
 				
 				
-				<div id="header" class="header" style="width:100%;">
-					<div class="maintitle"> NZ Running Stats</div>
-					<div class="subtitle"> A statistical summary of marathons from across New Zealand  </div>
-				</div>
-
-
-		
-		
-				<div class="tabs-bg"  style="width:100%;">
-				
-					<div style="text-align:center; margin-right:0px;">
-						<span class="tab selected">Home</span>
-						<a href="marathon/"> <span class="tab">Marathon</span></a>
-						<a href="half-marathon/"> <span class="tab">Half marathon</span></a>
-						<a href="10km/"> <span class="tab">10km race</span></a>
-						<a href="contact/"> <span class="tab">Contact us</span></a>
-					</div>
-				</div>
-
-				<br><br>
-
-
-
+				 <div id="headerDIV"></div> 
 
 
 
@@ -357,58 +342,6 @@ function queryPaceCalulator(from_speed = true){
 
 
 				</div>
-
-
-					<div class="display-div">
-
-					
-						<h1>Version History</h1>
-							
-						<div class="caption-div">
-					
-							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.0">Version 1.0</a> (2018-11-29)</b>
-							<ul> 
-								<li> First version including marathon, half marathon and 10km results
-							</ul>
-
-							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.1">Version 1.1</a> (2018-11-29)</b>
-							<ul> 
-								<li> Added 2015-2018 Mountain to Surf Marathons (now clear that this is a fast marathon as wisdom of crowds predicted)
-								<li> Removed marathons before 2014 (this avoids Wellington 2013 which was short).
-							</ul>
-
-							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.2">Version 1.2</a> (2018-12-02)</b>
-							<ul> 
-							    <li> All marathons now ranked using last 5 years where available (added 2014 Mountain to Surf Marathons (now ranked fastest), and added 2014-2015 Buller marathon)
-								<li> Added 2014-2018 Feilding Marathon (New Zealand's longest running marathon)
-								<li> Added 2016-2018 Mountain to Surf half marathons
-								<li> Added 2016-2018 Cambridge half marathons
-								<li> Added 2018 Tauranga City to Surf half marathon
-								<li> Removed bogus 2017 Omaha half marathon from Nebraska (lol) and added today's 2018 Omaha half marathon
- 							</ul>
- 							
- 							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.3">Version 1.3</a> (2018-12-09)</b>
-							<ul> 
-							    <li> Added 2015 New Plymouth 10km in place of 2016 New Plymouth 10km which is missing division data.
-							    <li> Added 2017 Southern lakes 10km race.
-							    <li> Added 2016-2018 Albany Lakes 10km series races (3 races per year = 9 races)
-							</ul>
-							
-							<b><a href="https://github.com/nzrunningstats/nzrunningstats.github.io/releases/tag/v1.4">Version 1.4</a> (2018-12-09)</b>
-
-							<ul>
-								<li>Fixed bug which caused times faster than 1hr to be ignored in following 10 races
-									<ul>
-										<li> 2015-2018 manawatu-striders 10km
-										<li> 2015-2017 new-plymouths 10km
-										<li> 2016 huntly and taupo 10km races
-										<li> 2017 southern-lakes 10km race
-									</ul>
-							</ul>
-						</div>
-
-
-					</div>
 
 
 	

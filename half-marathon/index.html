@@ -63,6 +63,7 @@
 <script language='JavaScript' type='text/JavaScript' src="../src/histogram.js"></script>
 <script language='JavaScript' type='text/JavaScript' src="../src/resultstable.js"></script>
 <script language='JavaScript' type='text/JavaScript' src="../src/populatePage.js"></script>
+<script language='JavaScript' type='text/JavaScript' src="../src/includeHTML.js"></script>
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -79,6 +80,9 @@
 <script language='JavaScript' type='text/JavaScript'>
 
 function init(){
+
+	
+	addHeaderHTML("#headerDIV", "halfmarathon");
 
 	populatePage();
 
@@ -104,24 +108,7 @@ function init(){
 
 			<div id="main" style="background-color:white">
 				
-				<div id="header" class="header" style="width:100%;">
-					<div class="maintitle"> NZ Running Stats</div>
-					<div class="subtitle"> A statistical summary of marathons from across New Zealand  </div>
-				</div>
-		
-				<div class="tabs-bg">
-					
-					<div style="text-align:center; margin-right:0px;">
-						<a href="../"> <span class="tab">Home</span></a>
-						<a href="../marathon/"> <span class="tab">Marathon</span></a>
-						<span class="tab selected">Half marathon</span>
-						<a href="../10km/"> <span class="tab">10km</span></a>
-						<a href="../contact/"> <span class="tab">Contact us</span></a>
-					</div>
-				</div>
-
-
-				<br><br>
+				<div id="headerDIV"></div> 
 
 				
    

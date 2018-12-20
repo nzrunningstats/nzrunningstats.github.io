@@ -96,6 +96,8 @@ populatePage = function(versionDirectory = "data") {
 		
 		// Add sorted list to dropdowns
 		sortedEvents.sort();
+		$("#userRanMarathon_dropdown").html("");
+		$("#userQueryMarathon_dropdown").html("");
 		for (var i = 0; i < sortedEvents.length; i ++){
 			$("#userRanMarathon_dropdown").append(`<option value="` + sortedEvents[i] + `">` + sortedEvents[i] + `</option>`);
 			$("#userQueryMarathon_dropdown").append(`<option value="` + sortedEvents[i] + `">` + sortedEvents[i] + `</option>`);

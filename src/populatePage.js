@@ -20,15 +20,15 @@
 -*/
 
 
+MONTHS = [null, "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
 
 // Populates the current page with plots and tables
-populatePage = function() {
+populatePage = function(versionDirectory = "data") {
 	
 	
-	
-	
-	
-	
+	console.log("opening", versionDirectory);
 	
 	// Mobile
 	var is_mobile = (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
@@ -60,7 +60,7 @@ populatePage = function() {
 
 	
 	// Load the anova course results .csv file
-	loadCSV("data/resC.csv", function(result){
+	loadCSV(versionDirectory + "/resC.csv", function(result){
 		if (result.error != null) {
 			alert(result.error);
 			return;
@@ -104,7 +104,9 @@ populatePage = function() {
 			
 		
 		
-		$("#userRanMarathon_dropdown").val("Wellington Round The Bays");
+		$("#userRanMarathon_dropdown").val("Auckland");
+		//console.log("XXX", $("#userRanMarathon_dropdown").val());
+		if ($("#userRanMarathon_dropdown").val() == null) $("#userRanMarathon_dropdown").val("Christchurch");
 		$("#userQueryMarathon_dropdown").val("Queenstown");
 		//console.log("halfMarathonCourseANOVA", halfMarathonCourseANOVA);
 		queryHalfMarathon();
@@ -112,12 +114,13 @@ populatePage = function() {
 		
 		
 		// Load the anova course results .csv file
-		loadCSV("data/resG.csv", function(result){
+		loadCSV(versionDirectory + "/resG.csv", function(result){
 			if (result.error != null) {
 				alert(result.error);
 				return;
 			}
 			ANOVA_course = result;
+			//ANOVA_course.date = [];
 			
 			// Preprocessing
 			for (var i = 0; i < ANOVA_course.nrows; i++){
@@ -134,10 +137,15 @@ populatePage = function() {
 						ANOVA_course.event[i] += event_split[j][0].toUpperCase() + event_split[j].substr(1).toLowerCase();
 						if (j < event_split.length - 1) ANOVA_course.event[i] += " ";
 					}
-					ANOVA_course.event[i] += " " + event_split[0]; // + "/" + event_split[1] +  "/" + event_split[2]; // YYYY/MM/DD
+					
+					var month = MONTHS[parseFloat(event_split[1])];
+					if (month == null) month = "";
+					else month += " ";
+					ANOVA_course.event[i] += ", " +  month  + event_split[0]; // "/" + event_split[1]; // +  "/" + event_split[2]; // YYYY/MM/DD
 					
 				}
 				if (ANOVA_course.event[i][0] == "*") ANOVA_course.event[i] = ANOVA_course.event[i].substr(1);
+				//ANOVA_course.date[i] = event_split[0] + "/" + event_split[1] +  "/" + event_split[2];
 				
 				// Capital on courses
 				var course_split = ANOVA_course.course[i].split("-");
@@ -170,7 +178,7 @@ populatePage = function() {
 	
 	
 	// Load the histogram .csv file
-	loadCSV("data/histogram.csv", function(result){
+	loadCSV(versionDirectory + "/histogram.csv", function(result){
 		if (result.error != null) {
 			alert(result.error);
 			return;
@@ -229,6 +237,7 @@ populatePage = function() {
 		}
 		
 		sortedEvents.sort();
+		$("#halfMarathonHistogram_dropdown").html("");
 		$("#halfMarathonHistogram_dropdown").append(`<option value="Total">Total</option>`);
 		for (var i = 0; i < sortedEvents.length; i ++){
 			if (sortedEvents[i] != "Total") $("#halfMarathonHistogram_dropdown").append(`<option value="` + sortedEvents[i] + `">` + sortedEvents[i] + `</option>`);
@@ -243,7 +252,7 @@ populatePage = function() {
 	
 	
 	// Load the marathon results
-	loadCSV("data/eventwebsites.csv", function(result){
+	loadCSV(versionDirectory + "/eventwebsites.csv", function(result){
 		if (result.error != null) {
 			alert(result.error);
 			return;
@@ -265,7 +274,7 @@ populatePage = function() {
 		}
 		
 		
-		loadCSV("data/marathonresults.csv", function(result){
+		loadCSV(versionDirectory + "/marathonresults.csv", function(result){
 			if (result.error != null) {
 				alert(result.error);
 				return;
@@ -304,6 +313,8 @@ populatePage = function() {
 	});
 	
 	
+	
+		
 	
 	
 	
@@ -435,6 +446,7 @@ function queryHalfMarathon(){
 	$("#userResponseMarathon").html("Your estimated time is " + formatMinutes(expectedTime) + ". The 95% confidence interval is (" + 
 				formatMinutes(expectedTime / dstderr) + ", " + formatMinutes(expectedTime * dstderr) + ").");
 	
+
 
 		
 

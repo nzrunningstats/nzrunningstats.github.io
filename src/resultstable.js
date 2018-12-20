@@ -36,6 +36,7 @@ function renderResultsTable(eventwebsites, marathonresults, race = "halfmarathon
 
 
 		console.log("marathonresults", marathonresults);
+		$("#results_table").html("");
 		$("#results_table").append(`
 		
 			<tr class="header-row">

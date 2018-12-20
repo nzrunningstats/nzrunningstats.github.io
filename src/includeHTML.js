@@ -45,9 +45,7 @@ function addHeaderHTML(selector, pagename){
 	if (pagename == "home") htmlHeader = htmlHeader.replace(/XXX/g, "");
 	else htmlHeader= htmlHeader.replace(/XXX/g, "../");
 	
-	console.log(htmlHeader);
-	
-	
+
 	$(selector).html(htmlHeader);
 	
 	

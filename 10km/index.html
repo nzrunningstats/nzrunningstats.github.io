@@ -63,6 +63,7 @@
 <script language='JavaScript' type='text/JavaScript' src="../src/resultstable.js"></script>
 <script language='JavaScript' type='text/JavaScript' src="../src/populatePage.js"></script>
 <script language='JavaScript' type='text/JavaScript' src="../src/includeHTML.js"></script>
+<script language='JavaScript' type='text/JavaScript' src="../src/versions.js"></script>
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -84,7 +85,8 @@ function init(){
 
 	addHeaderHTML("#headerDIV", "10km");
 
-	populatePage();
+	var currentVersionDirectory = renderVersionHistory();
+	populatePage(currentVersionDirectory);
 
             
 
@@ -231,6 +233,41 @@ function init(){
 						
 					</table>
 					
+
+
+				</div>
+				
+				
+				
+				<div class="display-div">
+
+					
+					<h1> Version control </h1>
+							
+					<div class="caption-div">
+					
+					
+						
+						
+						Select a version of the model to display on this page.
+						
+						 
+						
+						 The latest version will always be displayed by default.
+						
+						<br> <br>
+						
+						
+						<select onChange='selectVersion()' id="versionSelector" style="margin-right:20px" class="userInput" title="Select a version">
+						 
+						</select>
+						
+						<a href="../version/"> <span class="linkspan">Version history</span> </a> 
+						
+					
+					
+						
+					</div>
 
 
 				</div>
